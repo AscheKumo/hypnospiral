@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useEffect } from 'react'
 import {
+  createHashRouter,
   createMemoryRouter,
   Outlet,
   type RouteObject,
@@ -34,12 +35,14 @@ function HistoryManager () {
 
   useEffect(() => {
     if (navType === 'PUSH') {
-      window.history.pushState(undefined, '')
+      // For hash routing, we don't need to manage browser history manually
+      // The hash router handles this automatically
     }
   }, [navType, navigation])
 
   useEffect(() => {
     const handler = () => {
+      // For hash routing, we can still allow back navigation
       navigate(-1)
       onHashStateUpdate()
     }
@@ -114,10 +117,21 @@ const routes: RouteObject[] = [
   }
 ]
 
-const router = createMemoryRouter(routes, {
-  initialEntries: ['/'],
-  initialIndex: 1
-})
+// Use createMemoryRouter for server-side rendering, createHashRouter for client-side
+const createAppRouter = () => {
+  if (typeof window === 'undefined') {
+    // Server-side: use memory router
+    return createMemoryRouter(routes, {
+      initialEntries: ['/'],
+      initialIndex: 0
+    })
+  } else {
+    // Client-side: use hash router for static hosting
+    return createHashRouter(routes)
+  }
+}
+
+const router = createAppRouter()
 
 const App = () => (<RouterProvider router={router}/>)
 export default App
