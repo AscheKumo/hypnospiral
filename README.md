@@ -1,6 +1,29 @@
 # hypnospiral visualizer
 
 This is the source code of [hypno.zyntaks.ca](https://hypno.zyntaks.ca).
+<<<<<<< HEAD
+- [Key Features](#key-features)
+- [Project Structure](#project-structure)
+  - [Directory Structure](#directory-structure)
+  - [Testing](#testing)
+- [License](#license)
+
+
+## ✨ Key Features
+
+- Deeply customizable: Control everything from spiral speed and colors to subliminal messages and overlay effects.
+
+- Modern tech stack: Built with React, TypeScript, and webpack for a robust and maintainable codebase.
+
+- Clean client-Side routing: Uses BrowserRouter for standard, shareable URLs, resolving previous routing complexities.
+
+- Synchronized & Safe State: Settings are saved in real-time using a synchronized useLocalStorage hook, which safely handles server-side rendering environments.
+
+- Performance-Oriented: Designed to be lightweight and performant, even with complex animations.
+
+- Safety first: Includes important safety information and considerations for users.
+
+=======
 
 - [Project Structure](#project-structure)
   - [Directory Structure](#directory-structure)
@@ -10,6 +33,7 @@ This is the source code of [hypno.zyntaks.ca](https://hypno.zyntaks.ca).
     - [Router Jank](#router-jank)
 - [License](#license)
 
+>>>>>>> 24fd8d8b9b7b715cb58c02cb22a319887b5a44cb
 ## Project Structure
 
 This project is structured as a static website, using webpack to compile the TypeScript source into JS bundles.
@@ -44,6 +68,8 @@ Tests are defined in `[filename].test.ts`, which should appear alongside the ass
 Testing React and DOM/Browser-related features can be tricky.
 As much behaviour as possible should be kept abstracted away from UI and browser concerns, for easier testing.
 
+<<<<<<< HEAD
+=======
 ### Jank / Gotchas
 
 The hypnospiral visualizer uses several bits of tooling in unintended ways, so do keep these potentially flaky bits in
@@ -67,6 +93,7 @@ and uses the browser history API to keep track of React state changes. You must 
 route paths, which *look* like relative URL paths, with the actual URL - trying to direct a user to, for example,
 `/customize` using a regular `a href` will send them directly to a nonexistent page and a 404 message from the server.
 
+>>>>>>> 24fd8d8b9b7b715cb58c02cb22a319887b5a44cb
 ## License
 
 Source code copyright &copy; 2022-2025 PrinceZyntaks. Licensed under the MIT license, see LICENSE file for more details.

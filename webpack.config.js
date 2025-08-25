@@ -82,11 +82,18 @@ const clientConfig = {
                 ]
             }),
             new HtmlWebpackPlugin({
+<<<<<<< HEAD
+                publicPath: '/',
+=======
+                // The "template" line has been removed.
+>>>>>>> 24fd8d8b9b7b715cb58c02cb22a319887b5a44cb
                 templateParameters: async () => {
+                    if (isDevelopment) {
+                        return { injectCode: '' };
+                    }
                     const { App } = (require('./tmp/bundle.server.js'));
-                    // evil
                     React.useLayoutEffect = React.useEffect
-                    return {injectCode: ReactDOM.renderToStaticMarkup(React.createElement(App.default, null, null))}
+                    return { injectCode: ReactDOM.renderToStaticMarkup(React.createElement(App.default, null, null)) }
                 }
             }),
             isDevelopment && new ReactRefreshWebpackPlugin()
@@ -94,7 +101,12 @@ const clientConfig = {
         output: {
             filename: 'bundle.js',
             path: path.resolve(__dirname, 'dist'),
+<<<<<<< HEAD
+            clean: true,
+            publicPath: '/'
+=======
             clean: true
+>>>>>>> 24fd8d8b9b7b715cb58c02cb22a319887b5a44cb
         },
         devServer: {
             static: {
@@ -103,6 +115,10 @@ const clientConfig = {
             compress: true,
             port: 9000,
             hot: true,
+<<<<<<< HEAD
+            historyApiFallback: true,
+=======
+>>>>>>> 24fd8d8b9b7b715cb58c02cb22a319887b5a44cb
         },
     }
 };
